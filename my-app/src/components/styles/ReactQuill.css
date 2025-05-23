@@ -1,0 +1,90 @@
+css
+/* Toolbar background & border */
+.ql-toolbar.ql-snow {
+  background-color: #374151 !important; /* Tailwind gray-700 */
+  border: 1px solid #4b5563 !important;  /* Tailwind gray-600 */
+  border-radius: 0.375rem 0.375rem 0 0 !important;
+}
+
+/* Editor background & border */
+.ql-container.ql-snow {
+  background-color: #374151 !important;
+  border: 1px solid #4b5563 !important;
+  border-radius: 0 0 0.375rem 0.375rem !important;
+  color: #ffffff !important;
+}
+
+/* SVG Icons Default (neutral gray-200/300 like headings) */
+.ql-toolbar .ql-stroke,
+.ql-toolbar .ql-fill {
+  stroke: #e5e7eb !important;  /* Tailwind gray-200 */
+  fill: #e5e7eb !important;
+}
+
+/* Hover - pure white */
+.ql-toolbar .ql-stroke:hover,
+.ql-toolbar .ql-fill:hover {
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Active - blue */
+.ql-toolbar .ql-active .ql-stroke,
+.ql-toolbar .ql-active .ql-fill {
+  stroke: #3b82f6 !important;
+  fill: #3b82f6 !important;
+}
+
+/* Button text/icons */
+.ql-toolbar.ql-snow .ql-formats button,
+.ql-toolbar.ql-snow .ql-formats .ql-picker-label {
+  color: #e5e7eb !important; /* Tailwind gray-200 */
+}
+
+/* Hover on text/icon buttons */
+.ql-toolbar.ql-snow .ql-formats button:hover,
+.ql-toolbar.ql-snow .ql-formats .ql-picker-label:hover,
+.ql-toolbar.ql-snow .ql-formats .ql-picker-item:hover {
+  color: #ffffff !important;
+  background-color: #4b5563 !important;
+}
+
+/* Active buttons background */
+.ql-toolbar.ql-snow .ql-active,
+.ql-toolbar.ql-snow .ql-picker-item.ql-selected {
+  color: #3b82f6 !important;
+  background-color: #1f2937 !important;
+}
+
+/* Dropdown/picker background */
+.ql-toolbar.ql-snow .ql-picker-options {
+  background-color: #374151 !important;
+  border: 1px solid #4b5563 !important;
+  color: #e5e7eb !important;
+}
+
+/* Placeholder text in editor */
+.ql-container .ql-editor::before {
+  color: #9ca3af !important; /* Tailwind gray-400 */
+}
+
+/* Editor text */
+.ql-container .ql-editor {
+  color: #ffffff !important;
+}
+
+/* Color picker items border */
+.ql-snow .ql-picker.ql-color-picker .ql-picker-options .ql-picker-item {
+  border: 1px solid #4b5563 !important;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ql-toolbar.ql-snow {
+    padding: 8px; /* Smaller padding on mobile */
+  }
+  .ql-toolbar.ql-snow .ql-formats button {
+    padding: 4px; /* Smaller button padding on mobile */
+  }
+}
