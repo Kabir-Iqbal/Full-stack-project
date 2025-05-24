@@ -42,7 +42,7 @@ router.get('/:id', async (req: AuthRequest, res: Response) : Promise<any> => {
 router.post('/', auth,  async (req: AuthRequest, res: Response):Promise<any> => {
   // get the data from the request body
   const { title, category, body, status } = req.body;
-  console.log("req body",req.body);
+  
   // check if the data is present in the request body
   if (!title || !category || !body) {
     return res.status(400).json({ msg: 'Please fill all the fields' });

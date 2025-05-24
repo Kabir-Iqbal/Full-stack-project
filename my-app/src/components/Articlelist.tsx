@@ -53,7 +53,7 @@ const ArticleList: React.FC = () => {
                 <Link
                   key={article._id}
                   to={`/article/${article._id}`}
-                  className="flex items-center justify-between py-4 mx-2 border-b border-gray-700 hover:bg-gray-700 shadow-sm transition duration-200 w-full"
+                  className="flex px-1 items-center justify-between py-4 mx-2 border-b border-gray-700 hover:bg-gray-700 shadow-sm transition duration-200 w-full"
                 >
                   <div className="flex-1">
                     <h2 className="text-xl md:text-2xl font-semibold text-white truncate text-blue-500 hover:text-blue-400 transition duration-200">
