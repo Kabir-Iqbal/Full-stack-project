@@ -6,8 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 // authorization middleware function 
 const auth = (req, res, next) => {
+    var _a;
     // Get the token from Authorization header and remove 'Bearer '
-    const token = req.get('Authorization')?.replace('Bearer ', '');
+    const token = (_a = req.get('Authorization')) === null || _a === void 0 ? void 0 : _a.replace('Bearer ', '');
     // if token is not pressent return unautorized
     if (!token)
         return res.status(401).json({ msg: 'No token, authorization denied' });

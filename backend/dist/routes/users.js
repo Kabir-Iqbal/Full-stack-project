@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -9,18 +18,18 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const User_1 = __importDefault(require("../models/User"));
 const router = express_1.default.Router();
 // Register route
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password, username, name, age } = req.body;
     if (!email || !password || !username || !name || !age) {
         return res.status(400).send('Please fill all fields');
     }
-    const existingUser = await User_1.default.findOne({ email });
+    const existingUser = yield User_1.default.findOne({ email });
     if (existingUser) {
         return res.status(400).send('User already exists');
     }
     try {
-        const salt = await bcryptjs_1.default.genSalt(10);
-        const hash = await bcryptjs_1.default.hash(password, salt);
+        const salt = yield bcryptjs_1.default.genSalt(10);
+        const hash = yield bcryptjs_1.default.hash(password, salt);
         const user = new User_1.default({
             username,
             name,
@@ -28,7 +37,7 @@ router.post('/register', async (req, res) => {
             email,
             password: hash
         });
-        await user.save();
+        yield user.save();
         const token = jsonwebtoken_1.default.sign({ email: email, userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
         res.cookie("token", token);
         // Send success response (no token)
@@ -38,16 +47,16 @@ router.post('/register', async (req, res) => {
         console.error("Error during registration:", err);
         res.status(500).send("Internal Server Error");
     }
-});
+}));
 // Login route
-router.post('/login', async (req, res, next) => {
+router.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
-        const user = await User_1.default.findOne({ email });
+        const user = yield User_1.default.findOne({ email });
         if (!user)
             return res.status(400).json({ msg: 'Invalid credentials' });
         // Compare the password with the hashed password
-        const isMatch = await bcryptjs_1.default.compare(password, user.password);
+        const isMatch = yield bcryptjs_1.default.compare(password, user.password);
         // If the password doesn't match, return an error
         if (!isMatch)
             return res.status(400).json({ msg: 'Invalid credentials' });
@@ -59,5 +68,5 @@ router.post('/login', async (req, res, next) => {
     catch (err) {
         res.status(500).json({ error: err.message });
     }
-});
+}));
 exports.default = router;
