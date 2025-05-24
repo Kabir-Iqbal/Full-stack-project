@@ -55,7 +55,7 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
     <div>
       {/* Header Ui */}
       <header className="max-w-[1440px] w-full mx-auto bg-gray-800 flex justify-between items-center  text-white px-5 p-4">
-        <div className='flex items-center gap-5'>
+        <div className='flex items-center gap-2 sm:gap-5'>
         <h1 className="text-2xl font-bold">Notium</h1>
         {showSearch && (
         <input
@@ -63,7 +63,7 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
           placeholder="Search..."
-          className="mt-2 p-1 rounded bg-gray-700 text-white"
+          className="w-36 sm:w-64 mt-1 p-1 rounded bg-gray-700 text-white"
         />
         )}
         </div>
