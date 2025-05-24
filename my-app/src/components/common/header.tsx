@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FaPencilAlt, FaBell, FaUserCircle } from 'react-icons/fa'; // Import icons from react-icons
+import { useNavigate } from 'react-router-dom';
 // icons
 import { HiBars4 } from "react-icons/hi2";
 import { MdClose } from "react-icons/md";
+// importing Link for routing to other page
+import { Link } from 'react-router-dom';
 
 // Create a headers interface types for the header component
 interface HeaderProps {
@@ -17,6 +20,9 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
   const [user, setUser] = useState('');
   // state to manage the responsive
   const [isOpen, SetisOpen] = useState(false)
+
+  // set navigate for redirect or route
+  const navigate = useNavigate()
   
   // toggle button for the hamburger menu
   const toggleButton = () => {
@@ -38,7 +44,7 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
     // if user data removed then setted a default as guest data 
      setUser('Guest');
     //  after removed user will be moved to login page 
-    window.location.href = '/login';
+     navigate('/login');
   };
 
 
@@ -68,9 +74,9 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
               ${isOpen ? 'translate-x-0' : 'translate-x-full sm:translate-x-0'
             } sm:flex sm:items-center z-50`}
           >
-           <li><a href="/ArticleEditor" className=" order-2 sm:order-1  gap-1 flex items-center">
+           <li><Link to="/ArticleEditor" className=" order-2 sm:order-1  gap-1 flex items-center">
              <FaPencilAlt className="mr-1 " /> Write
-            </a></li> 
+            </Link></li> 
             <li><a href="" className=" order-1 sm:order-2  text-xl flex items-center">
              <FaBell className="mr-2 " />
             </a></li>
@@ -90,12 +96,12 @@ const Header : React.FC <HeaderProps> = ({ query , onQueryChange = () => {}, sho
                   </button>
                 </div>
               ) : (
-                <a
-                  href="/login"
+                <Link
+                  to="/login"
                   className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm font-medium transition duration-200"
                 >
                   Sign In
-                </a>
+                </Link>
               )}
             </li>
           </ul>
