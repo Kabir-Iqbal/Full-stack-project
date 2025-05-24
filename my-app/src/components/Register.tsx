@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ARTICALS_API } from './utils/apiUrl';
 
 // this is the type of the form data
 // we are using this type to set the state of the form data
@@ -71,7 +72,7 @@ const Register: React.FC = () => {
 
     // we send data though the axios in api for registration
     try {
-      const response = await axios.post('http://localhost:5000/api/users/register', formData);
+      const response = await axios.post(`${ARTICALS_API}/api/users/register`, formData);
       // localStorage.setItem('token', response.data.token);
       console.log('Registration successful:', response.data.message);
       navigate('/login');

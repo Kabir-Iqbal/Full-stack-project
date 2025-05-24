@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import type { Article } from '../types';
-import Header from './header';
 import DOMPurify from 'dompurify';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Header from './common/header';
+import { ARTICALS_API } from './utils/apiUrl';
+
 
  
 const ArticleDetail: React.FC = () => {
@@ -22,7 +24,7 @@ const ArticleDetail: React.FC = () => {
     // axios is used to make the api call , get/put/post the data from the api, 
     // Articale is the type of the data which we are getting from the api
     axios
-      .get<Article>(`http://localhost:5000/api/articles/${id}`)
+      .get<Article>(`${ARTICALS_API}/api/articles/${id}`)
       // then we set the article state with the data
       .then(res => setArticle(res.data))
       .catch(err => {
@@ -56,7 +58,7 @@ const ArticleDetail: React.FC = () => {
 
      
     // making the api call to delete the article
-    axios.delete(`http://localhost:5000/api/articles/${id}`, {
+    axios.delete(`${ARTICALS_API}/api/articles/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => navigate('/'))

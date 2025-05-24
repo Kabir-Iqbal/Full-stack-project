@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link  } from 'react-router-dom';
 
 import type { Article } from "../types";
-import Header from './header';
+import Header from './common/header';
+import { ARTICALS_API } from './utils/apiUrl';
 
 const ArticleList: React.FC = () => {
   // State variables for search query and articles
@@ -15,7 +16,7 @@ const ArticleList: React.FC = () => {
 
 // Fetching articles from the API
   useEffect(() => {
-    axios.get<Article[]>('http://localhost:5000/api/articles')
+    axios.get<Article[]>(`${ARTICALS_API}/api/articles`)
     // then we set the articles state with the data
       .then(res => setArticles(res.data))
       .catch(err => console.log(err));

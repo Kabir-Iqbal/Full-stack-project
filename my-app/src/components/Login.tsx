@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { ARTICALS_API } from './utils/apiUrl';
 
 
 
@@ -53,7 +54,7 @@ const Login: React.FC = () => {
     // if there is no error then we make the api call to login
     // we are using axios to make the api call
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login',{email,password} );
+      const response = await axios.post(`${ARTICALS_API}/api/users/login`,{email,password} );
       // Check if the response contains the expected data
       const { token, LoggedIn } = response.data; // Match backend field name
       // if token and LoggedIn are not present then we show the error message

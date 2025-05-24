@@ -1,0 +1,1 @@
+export const ARTICALS_API="https://notium-server.up.railway.app"

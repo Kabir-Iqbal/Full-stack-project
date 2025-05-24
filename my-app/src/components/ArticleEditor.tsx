@@ -1,8 +1,9 @@
 import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import ReactQuillComponent from "./ReactQuill"
-import Header from './header';
+import ReactQuillComponent from "./common/ReactQuill"
+import Header from './common/header';
+import { ARTICALS_API } from './utils/apiUrl';
 
 
 
@@ -23,7 +24,7 @@ const ArticleEditor: React.FC = () => {
   // we fetch the article data if id is present
   useEffect(() => {
     if (id) {
-      axios.get(`http://localhost:5000/api/articles/${id}`)
+      axios.get(`${ARTICALS_API}/api/articles/${id}`)
       // if article is present then we set the state with the data
         .then(res => {
           setTitle(res.data.title);
@@ -63,7 +64,7 @@ const ArticleEditor: React.FC = () => {
     // If id is present then we update the article
     if (id) {
       // here we are using put method to update the article
-      axios.put(`http://localhost:5000/api/articles/${id}`, article, config)
+      axios.put(`${ARTICALS_API}/api/articles/${id}`, article, config)
       // if article is updated then we navigate to the article page
         .then(() => navigate(`/article/${id}`))
         .catch(err => {
@@ -74,7 +75,7 @@ const ArticleEditor: React.FC = () => {
 
       // If id is not present then we create a new article
       // here we are using post method to create the article
-      axios.post('http://localhost:5000/api/articles', article, config)
+      axios.post(`${ARTICALS_API}/api/articles`, article, config)
       // if article is created then we navigate to the article page
         .then(res =>  navigate(`/article/${res.data._id}`))
         .catch(err => {
