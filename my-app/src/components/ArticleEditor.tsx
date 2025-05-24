@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import ReactQuillComponent from "./common/ReactQuill"
+import ReactQuillComponent from "./ReactQuill"
 import Header from './common/header';
 import { ARTICALS_API } from './utils/apiUrl';
 
