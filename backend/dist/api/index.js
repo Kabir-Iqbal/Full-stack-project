@@ -7,8 +7,8 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
-const articales_1 = __importDefault(require("./routes/articales"));
-const users_1 = __importDefault(require("./routes/users"));
+const articales_1 = __importDefault(require("../routes/articales"));
+const users_1 = __importDefault(require("../routes/users"));
 // Load environment variables from .env file
 dotenv_1.default.config();
 // Create an instance of an Express application
