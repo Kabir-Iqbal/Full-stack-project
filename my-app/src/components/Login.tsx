@@ -53,27 +53,54 @@ const Login: React.FC = () => {
 
     // if there is no error then we make the api call to login
     // we are using axios to make the api call
-    try {
-      const response = await axios.post(`${ARTICALS_API}/api/users/login`,{email,password} );
-      // Check if the response contains the expected data
-      const { token, LoggedIn } = response.data; // Match backend field name
-      // if token and LoggedIn are not present then we show the error message
-    if (!token || !LoggedIn) {
-      throw new Error('Missing token or username in response');
-    }
+  //   try {
+  //     const response = await axios.post(`${ARTICALS_API}/api/users/login`,{email,password} );
+  //     // Check if the response contains the expected data
+      
+  //     const { token, LoggedIn } = response.data; // Match backend field name
+  //     // if token and LoggedIn are not present then we show the error message
+  //   if (!token || !LoggedIn) {
+  //     throw new Error('Missing token or username in response');
+  //   }
 
-    // Store token  in localStorage
-    localStorage.setItem('token', token);
-    localStorage.setItem('username', LoggedIn); // Use 'username' as key
+  //   // Store token  in localStorage
+  //   localStorage.setItem('token', token);
+  //   localStorage.setItem('username', LoggedIn); // Use 'username' as key
      
-      navigate('/');
+  //     navigate('/');
 
-    } catch (error: any) {
-      setErrors({ api: error.response?.data?.message || 'Login failed. Please try again.' });
-    } finally {
-      setIsLoading(false);
+  //   } catch (error: any) {
+  //     setErrors({ api: error.response?.data?.message });
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+
+
+
+  try {
+    const response = await axios.post(
+      `${ARTICALS_API}/api/users/login`,
+      { email, password },
+      { headers: { "Content-Type": "application/json" } }
+    );
+  
+    const { token, LoggedIn } = response.data;
+  
+    if (!token || !LoggedIn) {
+      throw new Error("Missing token or username in response");
     }
-  };
+  
+    localStorage.setItem("token", token);
+    localStorage.setItem("username", LoggedIn);
+  
+    navigate("/");
+  } catch (error: any) {
+    setErrors({ api: error.response?.data?.msg || error.message });
+  } finally {
+    setIsLoading(false);
+  }
+}
 
  
 

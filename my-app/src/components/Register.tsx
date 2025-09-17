@@ -74,10 +74,11 @@ const Register: React.FC = () => {
     try {
       const response = await axios.post(`${ARTICALS_API}/api/users/register`, formData);
       // localStorage.setItem('token', response.data.token);
+      
       console.log('Registration successful:', response.data.message);
       navigate('/login');
     } catch (error: any) {
-      setErrors({ api: error.response?.data?.message || 'Registration failed. Please try again.' });
+      setErrors({ api: error.response?.data?.message || error.message });
     } finally {
       setIsLoading(false);
     }

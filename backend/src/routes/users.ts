@@ -53,6 +53,8 @@ router.post('/register', async (req: Request, res: Response): Promise<any> => {
 // Login route
 router.post('/login', async (req: Request, res: Response, next:NextFunction): Promise<any> => {
   const { email, password } = req.body;
+  console.log("body login", req.body);
+  
   try {
     const user = await User.findOne({ email });
 

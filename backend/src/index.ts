@@ -1,9 +1,10 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import articleRoutes from './routes/articales';
 import userRoutes from './routes/users';
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -19,8 +20,14 @@ app.use(express.json());
 
  // Mount article routes at /api/articles
 app.use('/api/articles', articleRoutes);
+
+
+
 // Mount user routes at /api/users
 app.use('/api/users', userRoutes);
+
+
+
 
 // Connect to MongoDB using Mongoose and handle success or error
 mongoose.connect(process.env.MONGO_URI!)
