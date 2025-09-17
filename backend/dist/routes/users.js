@@ -51,6 +51,7 @@ router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, functio
 // Login route
 router.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
+    console.log("body login", req.body);
     try {
         const user = yield User_1.default.findOne({ email });
         if (!user)
