@@ -35,5 +35,9 @@ mongoose.connect(process.env.MONGO_URI!)
 .catch((err) => console.error("MongoDB connection error:", err));
 
 
-// Start the Express server on the defined PORT
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// // Start the Express server on the defined PORT
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+// in vercel 
+export default app;
