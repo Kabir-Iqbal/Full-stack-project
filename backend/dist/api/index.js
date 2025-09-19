@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const db_1 = __importDefault(require("../utils/db"));
 const articales_1 = __importDefault(require("../routes/articales"));
 const users_1 = __importDefault(require("../routes/users"));
 // Load environment variables from .env file
@@ -23,15 +23,12 @@ app.use(express_1.default.json());
 app.use('/api/articles', articales_1.default);
 // Mount user routes at /api/users
 app.use('/api/users', users_1.default);
-// Connect to MongoDB using Mongoose and handle success or error
-mongoose_1.default.connect(process.env.MONGO_URI)
-    .then(() => console.log("MongoDB connected"))
-    .catch((err) => console.error("MongoDB connection error:", err));
 // Your routes here
 app.get('/', (req, res) => {
     res.send('API is running');
 });
 // // Start the Express server on the defined PORT
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+(0, db_1.default)();
 // in vercel 
 exports.default = app;

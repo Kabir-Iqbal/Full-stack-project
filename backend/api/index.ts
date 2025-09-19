@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import connectDB from "../utils/db";
 import articleRoutes from "../routes/articales";
 import userRoutes from '../routes/users';
 
@@ -29,10 +29,7 @@ app.use('/api/users', userRoutes);
 
 
 
-// Connect to MongoDB using Mongoose and handle success or error
-mongoose.connect(process.env.MONGO_URI!)
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err));
+
 
 // Your routes here
 app.get('/', (req, res) => {
@@ -42,6 +39,8 @@ app.get('/', (req, res) => {
 
 // // Start the Express server on the defined PORT
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+connectDB()
 
 
 // in vercel 
