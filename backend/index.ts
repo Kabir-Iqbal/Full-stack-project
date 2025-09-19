@@ -2,8 +2,8 @@ import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import articleRoutes from "../routes/articales";
-import userRoutes from '../routes/users';
+import articleRoutes from "./routes/articales";
+import userRoutes from './routes/users';
 
 
 // Load environment variables from .env file
