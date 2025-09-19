@@ -27,7 +27,7 @@ app.use('/api/users', users_1.default);
 mongoose_1.default.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB connected"))
     .catch((err) => console.error("MongoDB connection error:", err));
-// Start the Express server on the defined PORT
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// // Start the Express server on the defined PORT
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // in vercel 
 exports.default = app;
