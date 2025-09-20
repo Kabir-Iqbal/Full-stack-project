@@ -10,6 +10,11 @@
     {
       "src": "/(.*)",
       "dest": "api/index.ts"
+    },
+    {
+      "buildCommand": "npm install --legacy-peer-deps && npm run build",
+      "outputDirectory": "dist"
     }
+    
   ]
 }
