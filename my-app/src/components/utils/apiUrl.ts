@@ -4,7 +4,7 @@
 
 
 // Base URLs
-const PROD_BASE_URL = "https://notium-server.up.railway.app";
+const PROD_BASE_URL = "https://backend-api-notium.vercel.app";
 const DEV_BASE_URL = "http://localhost:5000";
 
 // Select base URL according to environment
