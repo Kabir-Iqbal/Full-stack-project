@@ -27,3 +27,15 @@ const ArticleSchema: Schema = new Schema({
 
 // export both schema and Artical
 export default mongoose.model<IArticle>('Article', ArticleSchema);
+
+
+
+// export interface IArticle {
+//   title: string;
+//   category: string;
+//   body: string;
+//   author: string; // ObjectId ko string mein convert kiya kyunki MongoDB driver mein direct ObjectId as string store hota hai
+//   status: 'draft' | 'published';
+//   createdAt: Date;
+//   updatedAt: Date;
+// }

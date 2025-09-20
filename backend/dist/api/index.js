@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("../utils/db"));
 const articales_1 = __importDefault(require("../routes/articales"));
 const users_1 = __importDefault(require("../routes/users"));
@@ -23,10 +23,10 @@ app.use(express_1.default.json());
 app.use('/api/articles', articales_1.default);
 // Mount user routes at /api/users
 app.use('/api/users', users_1.default);
-// Your routes here
-app.get('/', (req, res) => {
-    res.send('API is running');
-});
+// // Your routes here
+// app.get('/', (req, res) => {
+//     res.send('API is running');
+//   });
 // // Start the Express server on the defined PORT
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 (0, db_1.default)();

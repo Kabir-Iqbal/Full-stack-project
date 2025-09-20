@@ -13,15 +13,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-// Connect to MongoDB using Mongoose and handle success or error
-// .catch((err) => console.error("MongoDB connection error:", err));
+const dotenv_1 = __importDefault(require("dotenv"));
+// Load environment variables from .env file
+dotenv_1.default.config();
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     if (mongoose_1.default.connection.readyState >= 1) {
         return;
     }
+    const mongoUri = process.env.MONGO_URI;
+    if (!mongoUri) {
+        throw new Error("MONGO_URI environment variable is not defined");
+    }
     try {
-        yield mongoose_1.default.connect(process.env.MONGO_URI)
-            .then(() => console.log("MongoDB connected"));
+        yield mongoose_1.default.connect(mongoUri);
+        console.log("✅ Connected to MongoDB");
     }
     catch (error) {
         console.log("❌ MongoDB connection error:", error);

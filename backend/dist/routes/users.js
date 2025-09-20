@@ -71,3 +71,37 @@ router.post('/login', (req, res, next) => __awaiter(void 0, void 0, void 0, func
     }
 }));
 exports.default = router;
+// import { Router, Request, Response } from 'express';
+// import { MongoClient } from 'mongodb';
+// import { IUser } from '../models/User';
+// const router = Router();
+// // Get all users
+// router.get('/', async (req: Request, res: Response) => {
+//   try {
+//     const client = req.app.locals.dbClient as MongoClient;
+//     const db = client.db('your_db_name'); // Apna DB name dalo
+//     const users = await db.collection('users').find<IUser>({}).toArray();
+//     res.json(users);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Users fetch karne mein error' });
+//   }
+// });
+// // Add a new user
+// router.post('/', async (req: Request, res: Response) => {
+//   try {
+//     const client = req.app.locals.dbClient as MongoClient;
+//     const db = client.db('your_db_name'); // Apna DB name dalo
+//     const user: IUser = {
+//       username: req.body.username,
+//       email: req.body.email,
+//       password: req.body.password,
+//       name: req.body.name,
+//       age: req.body.age,
+//     };
+//     const result = await db.collection('users').insertOne(user);
+//     res.status(201).json({ id: result.insertedId, ...user });
+//   } catch (error) {
+//     res.status(500).json({ error: 'User create karne mein error' });
+//   }
+// });
+// export default router;

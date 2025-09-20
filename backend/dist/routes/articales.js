@@ -123,3 +123,39 @@ router.delete('/:id', auth_1.default, (req, res) => __awaiter(void 0, void 0, vo
     }
 }));
 exports.default = router;
+// import { Router, Request, Response } from 'express';
+// import { MongoClient } from 'mongodb';
+// import { IArticle } from '../models/Artical'; // Spelling confirm karo: Article ya Artical?
+// const router = Router();
+// // Get all articles
+// router.get('/', async (req: Request, res: Response) => {
+//   try {
+//     const client = req.app.locals.dbClient as MongoClient;
+//     const db = client.db('your_db_name'); // Apna DB name dalo
+//     const articles = await db.collection('articles').find<IArticle>({}).toArray();
+//     res.json(articles);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Articles fetch karne mein error' });
+//   }
+// });
+// // Add a new article
+// router.post('/', async (req: Request, res: Response) => {
+//   try {
+//     const client = req.app.locals.dbClient as MongoClient;
+//     const db = client.db('your_db_name'); // Apna DB name dalo
+//     const article: IArticle = {
+//       title: req.body.title,
+//       category: req.body.category,
+//       body: req.body.body,
+//       author: req.body.author, // User ID as string
+//       status: req.body.status || 'draft',
+//       createdAt: new Date(),
+//       updatedAt: new Date(),
+//     };
+//     const result = await db.collection('articles').insertOne(article);
+//     res.status(201).json({ id: result.insertedId, ...article });
+//   } catch (error) {
+//     res.status(500).json({ error: 'Article create karne mein error' });
+//   }
+// });
+// export default router;

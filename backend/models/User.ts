@@ -11,3 +11,12 @@ const userSchema = new mongoose.Schema({
 
 // also export user schema
 export default mongoose.model('User', userSchema);
+
+
+// export interface IUser {
+//   username: string;
+//   email: string;
+//   password: string;
+//   name: string;
+//   age: string;
+// }

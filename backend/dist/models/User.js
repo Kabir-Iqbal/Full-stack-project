@@ -14,3 +14,10 @@ const userSchema = new mongoose_1.default.Schema({
 });
 // also export user schema
 exports.default = mongoose_1.default.model('User', userSchema);
+// export interface IUser {
+//   username: string;
+//   email: string;
+//   password: string;
+//   name: string;
+//   age: string;
+// }

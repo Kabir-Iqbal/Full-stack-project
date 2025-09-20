@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from "../utils/db";
 import articleRoutes from "../routes/articales";
 import userRoutes from '../routes/users';
@@ -27,14 +27,10 @@ app.use('/api/articles', articleRoutes);
 app.use('/api/users', userRoutes);
 
 
-
-
-
-
-// Your routes here
-app.get('/', (req, res) => {
-    res.send('API is running');
-  });
+// // Your routes here
+// app.get('/', (req, res) => {
+//     res.send('API is running');
+//   });
 
 
 // // Start the Express server on the defined PORT
@@ -45,3 +41,4 @@ connectDB()
 
 // in vercel 
 export default app;
+
